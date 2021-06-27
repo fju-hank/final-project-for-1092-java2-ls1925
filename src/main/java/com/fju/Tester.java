@@ -36,6 +36,8 @@ public class Tester {
         }
         System.out.println("妳需要洗哪些項目呢?(a:大型衣物，b:一般衣物，c:襪子)");
         int coins=0;
+        int[] times ={0,0,0};
+        int time = 0;
         LargeClothing l = new LargeClothing();
         GeneralClothing g = new GeneralClothing();
         Socks socks = new Socks();
@@ -45,14 +47,20 @@ public class Tester {
             if(s.startsWith("a")||s.startsWith("b")||s.startsWith("c")||s.startsWith("0")){
                 if (s.equals("a")) {
                     coins += l.price;
+                    times[0]+=1;
+                    time += l.minute;
                     System.out.println("累積: $" + coins);
                 }
                 if (s.equals("b")) {
                     coins += g.price;
+                    times[1]+=1;
+                    time += g.minute;
                     System.out.println("累積: $" + coins);
                 }
                 if (s.equals("c")) {
                     coins += socks.price;
+                    times[2]+=1;
+                    time += socks.minute;
                     System.out.println("累積: $" + coins);
                 }
                 if(s.equals("0")){
@@ -60,7 +68,9 @@ public class Tester {
                         System.out.println("無選取之物，無須投幣，謝謝惠顧!");
                         System.exit(0);
                     }else {
-                        System.out.println("總共:"+coins);
+                        System.out.println("總共:"+coins+"元");
+                        System.out.println("選了 洗大型衣物: "+times[0]+"次，洗一般衣物: "+times[1]+"次，洗襪子: "+times[2]+"次");
+                        System.out.println("洗衣需耗時 "+time/60+"小時 "+time%60+"分鐘");
                         break;
                     }
                 }
@@ -94,7 +104,7 @@ public class Tester {
             System.out.println("謝謝光臨!");
         }
 
-        System.out.println("最後警示，請按照規矩來，勿偷取店內之物，按1可看以下附近監視器資訊!");
+        System.out.println("最後警示，請按照規矩來，勿偷取店內之物，按 1 可看以下附近監視器資訊(到處都是請自重)!!");
         s = scanner.next();
         if(s.equals("1")){
             try {
