@@ -7,10 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 import java.util.Scanner;
+import java.awt.Desktop;
 
 public class Tester {
     public static void main(String[] args) {
@@ -34,6 +33,26 @@ public class Tester {
             }
             System.out.println();
         }
+        System.out.println("再洗衣前可先參考洗衣的SOP流程(網站)，於 5 秒後跳過去:");
+        System.out.println("看完後，請再回來繼續選要洗的項目喔!");
+        try {
+            for (int i = 0; i < 5; i++) {
+                Thread.sleep(1000);
+                System.out.println("Sleep "+i);
+            }
+        }catch(Exception e) {
+            System.out.println(e);
+        }
+        try {
+            Desktop desktop = Desktop.getDesktop();
+            URI uri = new URI("https://blog.jackercleaning.com/blog/laundry-sop");
+            desktop.browse(uri);
+        }catch (URISyntaxException e){
+            System.out.println(e);
+        }catch (IOException e){
+            System.out.println(e);
+        }
+
         System.out.println("妳需要洗哪些項目呢?(a:大型衣物，b:一般衣物，c:襪子)");
         int coins=0;
         int[] times ={0,0,0};
