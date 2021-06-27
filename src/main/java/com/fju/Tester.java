@@ -81,20 +81,15 @@ public class Tester {
             System.exit(0);
         }else {
             System.out.println("退還:");
-            if(surplus>=50){
-                System.out.println(surplus/50+"個 50元");
-                surplus%=50;
-            }if(surplus>=10){
-                System.out.println(surplus/10+"個 10元");
-                surplus%=10;
-            }if(surplus>=5){
-                System.out.println(surplus/5+"個 5元");
-                surplus%=5;
-            }if(surplus>=1){
-                System.out.println(surplus+"個 1元");
-            }
             if(surplus==0){
                 System.out.println("0元");
+            }
+            int[] divisor = {50,10,5,1};
+            for (int i = 0; i < 4; i++) {
+                if(surplus>=divisor[i]){
+                    System.out.println(surplus/divisor[i]+"個 "+divisor[i]+"元");
+                    surplus%=divisor[i];
+                }
             }
             System.out.println("謝謝光臨!");
         }
