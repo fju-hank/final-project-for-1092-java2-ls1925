@@ -1,6 +1,12 @@
 package com.fju;
 
 import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,25 +14,45 @@ import java.util.Scanner;
 
 public class Tester {
     public static void main(String[] args) {
+        System.out.println("這邊能提供給您一些洗衣服的偏方，願意先瀏覽請按 4 ,不願者可按其他鍵直接進入下一步");
+        Scanner scanner = new Scanner(System.in);
+        int s1 = Integer.parseInt(scanner.next());
+        if(s1==4){
+            try{
+                FileInputStream fis = new FileInputStream("src/main/java/com/fju/Knowledge");
+                InputStreamReader isr =new InputStreamReader(fis);
+                BufferedReader br = new BufferedReader(isr);
+                String string = br.readLine();
+                while (string != null){
+                    System.out.println(string);
+                    string = br.readLine();
+                }
+            }catch (FileNotFoundException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                System.out.println("Error reading");
+            }
+            System.out.println();
+        }
         System.out.println("妳需要洗哪些項目呢?(a:大型衣物，b:一般衣物，c:襪子)");
         int coins=0;
         LargeClothing l = new LargeClothing();
         GeneralClothing g = new GeneralClothing();
         Socks socks = new Socks();
-        Scanner scanner = new Scanner(System.in);
+
         String s = scanner.next();
         while (s != "0"){
             if (s.equals("a")) {
                 coins += l.price;
-                System.out.println(coins);
+                System.out.println("累積: $" + coins);
             }
             if (s.equals("b")) {
                 coins += g.price;
-                System.out.println(coins);
+                System.out.println("累積: $" + coins);
             }
             if (s.equals("c")) {
                 coins += socks.price;
-                System.out.println(coins);
+                System.out.println("累積: $" + coins);
             }
             System.out.println("還有要加的選項嗎? 無 請按0，有 請繼續按您所要的選項");
             s = scanner.next();
@@ -56,25 +82,28 @@ public class Tester {
                 System.out.println(surplus+"個 1元");
             }
         }
-         try {
-            URL url = new URL("http://myjson.dit.upm.es/api/bins/1cbw");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            InputStream is = connection.getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(is));
-            String line = in.readLine();
-            StringBuffer sb = new StringBuffer();
-            while (line != null){
-                System.out.println(line);
-                sb.append(line);
-                line = in.readLine();
+        System.out.println("最後警示，請按照規矩來，勿偷取店內之物，按1可看以下附近監視器資訊!");
+        s = scanner.next();
+        if(s.equals("1")){
+            try {
+                URL url = new URL("https://odws.hccg.gov.tw/001/Upload/25/opendataback/9059/155/b08e0903-9ed7-4017-a405-9a4e556a4f8d.json");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                InputStream is = connection.getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(is,"UTF-8"));
+                String line = in.readLine();
+                StringBuffer sb = new StringBuffer();
+                while (line != null){
+                    System.out.println(line);
+                    sb.append(line);
+                    line = in.readLine();
+                }
+//            System.out.print(sb.toString());
+            }catch (MalformedURLException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
             }
-            System.out.print(sb.toString());
-        }catch (MalformedURLException e){
-            e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
         }
-
 
     }
 }
