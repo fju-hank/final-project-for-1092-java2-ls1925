@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.fju.WasherDemo">
-  <grid id="27dc6" row-count="1" column-count="1" layout-manager="GridLayoutManager">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="panel1" layout-manager="FlowLayout" hgap="50" vgap="150" flow-align="4">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
-      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+      <xy x="126" y="142" width="384" height="374"/>
     </constraints>
-    <properties/>
-    <border type="none"/>
-    <children/>
+    <properties>
+      <background color="-337474"/>
+      <foreground color="-337469"/>
+      <toolTipText value="滿意度調查 "/>
+    </properties>
+    <border type="none" title="滿意度調查"/>
+    <children>
+      <component id="87fd7" class="javax.swing.JButton" binding="button2">
+        <constraints/>
+        <properties>
+          <background color="-861485"/>
+          <enabled value="true"/>
+          <foreground color="-8584443"/>
+          <hideActionText value="true"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <maximumSize width="123" height="50"/>
+          <minimumSize width="123" height="50"/>
+          <text value="我很滿意(Like ! )"/>
+          <verticalAlignment value="0"/>
+          <visible value="true"/>
+        </properties>
+      </component>
+      <component id="774a9" class="javax.swing.JButton" binding="button3">
+        <constraints/>
+        <properties>
+          <autoscrolls value="false"/>
+          <background color="-4787521"/>
+          <foreground color="-16089836"/>
+          <hideActionText value="false"/>
+          <horizontalTextPosition value="0"/>
+          <text value="有待加強ㄟ !"/>
+          <verticalTextPosition value="3"/>
+        </properties>
+      </component>
+    </children>
   </grid>
 </form>

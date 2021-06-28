@@ -1,5 +1,6 @@
 package com.fju;
 
+import javax.swing.*;
 import java.io.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -123,7 +124,7 @@ public class Tester {
             System.out.println("謝謝光臨!");
         }
 
-        System.out.println("最後警示，請按照規矩來，勿偷取店內之物，按 1 可看以下附近監視器資訊(到處都是請自重)!!");
+        System.out.println("警示，請按照規矩來，勿偷取店內之物，按 1 可看以下附近監視器資訊(到處都是請自重)!!");
         s = scanner.next();
         if(s.equals("1")){
             try {
@@ -144,6 +145,17 @@ public class Tester {
             }catch (IOException e){
                 e.printStackTrace();
             }
+        }
+        System.out.println("最後，想請您幫我們按個滿不滿意這次的介面服務，請按 9 顯示視窗");
+        s = scanner.next();
+        if(s.equals("9")){
+            JFrame frame = new JFrame();
+            frame.setContentPane(new WasherDemo().panel1);
+            frame.setVisible(true);
+            frame.setSize(400, 300);
+            frame.setLocationRelativeTo(null);
+            frame.setContentPane(new WasherDemo().panel1);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
 
     }
