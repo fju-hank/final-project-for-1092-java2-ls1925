@@ -34,10 +34,10 @@ public class Tester {
             }
             System.out.println();
         }
-        System.out.println("再洗衣前可先參考洗衣的SOP流程(網站)，於 5 秒後跳過去:");
+        System.out.println("再洗衣前可先參考洗衣的SOP流程(網站)，於 7 秒後跳過去:");
         System.out.println("看完後，請再回來繼續選要洗的項目喔!");
         try {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 7; i++) {
                 Thread.sleep(1000);
                 System.out.println("Sleep "+i);
             }
